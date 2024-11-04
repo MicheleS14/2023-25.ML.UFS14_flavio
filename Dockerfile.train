@@ -5,7 +5,5 @@ RUN pip install -r /opt/ml/code/requirements.txt
 
 ADD ./main.py /opt/ml/code/main.py
 
-ADD ./abalone.py /opt/ml/code/abalone.py
-
 ENV SAGEMAKER_PROGRAM main.py
 
