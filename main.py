@@ -3,7 +3,6 @@ import tensorflow as tf
 import pandas as pd
 import numpy as np 
 import matplotlib.pyplot as plt
-import seaborn as sns 
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler    
@@ -37,12 +36,13 @@ def model_run(
 
         model.compile(loss='binary_crossentropy', optimizer='adam')
 
-        model.fit(x=X_train, y=y_train, epochs=10, validation_data=(X_test, y_test))
+        model.fit(x=X_train, y=y_train, epochs=100, validation_data=(X_test, y_test))
 
         losses = pd.DataFrame(model.history.history)
         # losses.plot()
         
         model.save_weights(rf'{model_dir}/my_model_weights.weights.h5')
+        model.save(rf'{model_dir}/my_model.keras')
 
         return 'Ha funzionato'
     
